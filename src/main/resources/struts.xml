@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<!--添加spring后-->
+<struts>
+
+    <!--<constant name="struts.action.extension" value="action" />-->
+
+    <package name="default" namespace="/" extends="struts-default">
+        <!-- 登陆 -->
+
+        <!--普通用户登陆-->
+        <action name="login" class="action.LoginAction" method="userLogin">
+            <result name="success">user_index.jsp</result>
+            <result name="error">login.html</result>
+        </action>
+
+        <!--管理员登陆-->
+        <action name="loginAdmin" class="action.LoginAction" method="adminLogin">
+            <result name="success">/flight.jsp</result>
+            <result name="error">/login_admin.html</result>
+        </action>
+
+        <!-- 添加航班 -->
+        <action name="addFlight" class="action.admin.AddFlight">
+            <result name="success">/flight.jsp</result>
+            <result name="error">/flight.jsp</result>
+        </action>
+
+        <!-- 删除航班 -->
+        <action name="deleteFlight" class="action.admin.DeleteFlight" method="deleteFlight">
+            <result name="success">/flight.jsp</result>
+            <result name="error">/flight.jsp</result>
+        </action>
+
+
+
+        <!-- 管理员获取乘客列表 -->
+        <action name="getUserList" class="action.GetData" method="getUserList">
+            <result name="success">/passenger.jsp</result>
+            <result name="error">/passenger.jsp</result>
+        </action>
+
+        <!-- 管理员添加用户 -->
+        <action name="addUser" class="action.admin.AddUser" >
+            <result name="success">/passenger.jsp</result>
+            <result name="error">/passenger.jsp</result>
+        </action>
+
+        <!-- 管理员删除用户 -->
+        <action name="deleteUser" class="action.admin.DeleteUser" method="deleteUser" >
+            <result name="success">/passenger.jsp</result>
+            <result name="error">/passenger.jsp</result>
+        </action>
+
+        <!-- 获取航班信息 -->
+        <action name="getFlightList" class="action.GetData" method="getAllFligh">
+            <result name="success"></result>
+            <result name="error"></result>
+        </action>
+
+        <!-- 乘客预定航班 -->
+        <action name="bookFlight" class="action.user.BookFlight" method="bookFlight">
+            <result name="success">user_orders.jsp</result>
+            <result name="error">user_index.jsp</result>
+        </action>
+
+        <!-- 乘客获取自己的订单信息 -->
+        <action name="userGetFlightList" class="action.user.GetFlight" method="getFlight">
+            <result name="success"></result>
+            <result name="error"></result>
+        </action>
+
+
+
+    </package>
+</struts>
