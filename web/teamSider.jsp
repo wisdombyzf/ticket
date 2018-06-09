@@ -40,6 +40,17 @@
                 <li><a href="passenger.jsp"><i class="fa fa-circle-o"></i>管理乘客信息</a></li>
             </ul>
         </li>
+        <li class="active treeview">
+            <a href="Match">
+                <i class="fa fa-flag"></i> <span>订单信息</span>
+                <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+                <li><a href="order.jsp"><i class="fa fa-circle-o"></i>管理订单信息</a></li>
+            </ul>
+        </li>
         <%--<li class="treeview">--%>
             <%--<a href="#">--%>
                 <%--<i class="fa fa-table"></i> <span>订单信息</span>--%>

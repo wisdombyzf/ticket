@@ -1,27 +1,25 @@
-package action.user;
+package action.admin;
 
-import Service.UserService;
+import Service.OrderService;
 import action.BaseAction;
 import net.sf.json.JSONArray;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import vo.FlightsVo;
+import vo.OrdersVo;
 import vo.UsersVo;
 
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.util.List;
 
 @Controller
-public class GetFlight extends BaseAction
+public class getOrder extends BaseAction
 {
-
     @Autowired
-    UserService userService;
-
+    OrderService orderService;
     /**
      * PrintWriter初始化
      * @return
@@ -37,26 +35,23 @@ public class GetFlight extends BaseAction
     }
 
     /**
-     * 获取该乘客的所有订单
+     * 获取该所有订单
      * @return
      * @throws IOException
      */
-    public String getFlight() throws IOException
+    public String getorders() throws IOException
     {
-        HttpSession session=getSession();
-        UsersVo usersVo= (UsersVo) session.getAttribute("user");
-        List<FlightsVo> vos = userService.getUserFlightList(usersVo);
-
+        List<OrdersVo> vos = orderService.getAllOrderList();
         PrintWriter out=ini();
         JSONArray jsonArray=new JSONArray();
-        for (FlightsVo vo:vos)
+        for (OrdersVo vo:vos)
         {
             jsonArray.add(vo);
         }
         out.print(jsonArray);
         out.flush();
         out.close();
-        System.out.println("乘客获取订单成功");
+        System.out.println("管理员获取所有订单成功");
         return "success";
     }
 

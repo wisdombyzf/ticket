@@ -44,6 +44,8 @@ public interface BaseDao<T>
     void delete(Serializable id);
 
 
+    void delete(Object obj);
+
     /**
      * 根据id查找一个对象
      *

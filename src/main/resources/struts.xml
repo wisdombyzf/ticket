@@ -62,8 +62,32 @@
             <result name="error"></result>
         </action>
 
+        <!-- 管理员获取订单信息 -->
+        <action name="getOrders" class="action.admin.getOrder" method="getorders">
+            <result name="success"></result>
+            <result name="error"></result>
+        </action>
+
+        <!-- 管理员添加订单信息 -->
+        <action name="addOrders" class="action.admin.addOrder" method="addOrders">
+            <result name="success">/order.jsp</result>
+            <result name="error">/order.jsp</result>
+        </action>
+
+        <!-- 管理员删除订单信息 -->
+        <action name="adminDeleteOrders" class="action.admin.adminDeleteOrder" method="deleteOrders">
+            <result name="success">/order.jsp</result>
+            <result name="error">/order.jsp</result>
+        </action>
+
         <!-- 乘客预定航班 -->
         <action name="bookFlight" class="action.user.BookFlight" method="bookFlight">
+            <result name="success">user_orders.jsp</result>
+            <result name="error">user_index.jsp</result>
+        </action>
+
+        <!-- 乘客取消航班 -->
+        <action name="deleteOrder" class="action.user.DeleteOrder" method="deleteOrder">
             <result name="success">user_orders.jsp</result>
             <result name="error">user_index.jsp</result>
         </action>

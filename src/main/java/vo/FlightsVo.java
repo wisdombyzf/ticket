@@ -15,6 +15,8 @@ public class FlightsVo
     private String time;
     private double price;
     private int seatLeft;
+    private String endTime;
+    private String discount;
 
     public String getId()
     {
@@ -84,5 +86,27 @@ public class FlightsVo
     public void setSeatLeft(int seatLeft)
     {
         this.seatLeft = seatLeft;
-    }}
+    }
+
+    public String getEndTime()
+    {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime)
+    {
+        this.endTime = endTime;
+    }
+
+    public String getDiscount()
+    {
+        return discount;
+    }
+
+    public void setDiscount(String discount)
+    {
+        this.discount = discount;
+    }
+
+}
 

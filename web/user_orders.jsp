@@ -174,6 +174,13 @@
                     <div class="box">
                         <div class="box-body">
                             <div id="toolbar">
+                                <button id="create"
+                                        class="btn btn-default"
+                                        data-toggle="modal"
+                                        data-target="#exampleModal">
+                                    退票
+                                </button>
+
                             </div>
                             <table id="player" class="table table-bordered table-striped">
                             </table>
@@ -224,11 +231,7 @@
                 field: 'id',
                 title: '航班id',
                 sortable: true
-            }, {
-                field: 'flightNo',
-                title: '航班号',
-                sortable: true,
-            }, {
+            },{
                 field: 'startPlace',
                 title: '出发地点',
                 sortable: true,
@@ -240,11 +243,19 @@
                 field: 'time',
                 title: '起飞时间',
                 sortable: true,
+            },{
+                field: 'endTime',
+                title: '降落时间',
+                sortable: true,
             }, {
                 field: 'price',
                 title: '价格',
                 sortable: true,
             }, {
+                field: 'discount',
+                title: '票价折扣',
+                sortable: true,
+            },{
                 field: 'seatLeft',
                 title: '剩余座位',
                 sortable: true,
@@ -281,22 +292,16 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="exampleModalLabel">添加记录</h4>
+                <h4 class="modal-title" id="exampleModalLabel">退票</h4>
             </div>
             <div class="modal-body">
                 <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
-                    <form class="form-horizontal" method="post" action="addFlight.action">
+                    <form class="form-horizontal" method="post" action="deleteOrder.action">
 
                         <div class="form-group">
-                            <label for="CultureScore" class="control-label col-sm-4">花费时间</label>
-                            <div class="col-sm-6"><input required type="text" class="form-control input-md" id="time" name="time"></div>
+                            <label for="CultureScore" class="control-label col-sm-4">输入退票航班id</label>
+                            <div class="col-sm-6"><input required type="text" class="form-control input-md" id="flightId" name="flightId"></div>
                         </div>
-
-                        <div class="form-group">
-                            <label for="CultureScore" class="control-label col-sm-4">价格</label>
-                            <div class="col-sm-6"><input required type="text" class="form-control input-md" id="price" name="price"></div>
-                        </div>
-
 
                         <div class="form-group">
                             <div class="col-xs-6"><button type="submit" class="btn btn-primary pull-right">确认</div>
@@ -308,6 +313,7 @@
         </div>
     </div>
 </div>
+
 
 <script>
     $.ajax({

@@ -14,10 +14,7 @@ public class UserServiceTest
     @Test
     public void getUserFlightList()
     {
-        UserService service=new UserService();
-        UsersVo vo=new UsersVo();
-        vo.setAccountNo("1");
-        List<FlightsVo> temp = service.getUserFlightList(vo);
-        System.out.println(temp);
+
+
     }
 }

@@ -232,10 +232,6 @@
                 title: '航班id',
                 sortable: true
             }, {
-                field: 'flightNo',
-                title: '航班号',
-                sortable: true,
-            }, {
                 field: 'startPlace',
                 title: '出发地点',
                 sortable: true,
@@ -247,11 +243,19 @@
                 field: 'time',
                 title: '起飞时间',
                 sortable: true,
+            },{
+                field: 'endTime',
+                title: '降落时间',
+                sortable: true,
             }, {
                 field: 'price',
                 title: '价格',
                 sortable: true,
             }, {
+                field: 'discount',
+                title: '票价折扣',
+                sortable: true,
+            },{
                 field: 'seatLeft',
                 title: '剩余座位',
                 sortable: true,

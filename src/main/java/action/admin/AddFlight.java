@@ -22,6 +22,8 @@ public class AddFlight extends BaseAction
     private String time;
     private double price;
     private int seatLeft;
+    private String endTime;
+    private String discount;
 
     @Autowired
     FlightService flightService;
@@ -36,6 +38,8 @@ public class AddFlight extends BaseAction
         vo.setTime(time);
         vo.setStartPlace(startPlace);
         vo.setSeatLeft(seatLeft);
+        vo.setEndTime(endTime);
+        vo.setDiscount(discount);
         if (flightService.AddFlight(vo))
         {
             System.out.println("航班添加成功");
@@ -81,5 +85,15 @@ public class AddFlight extends BaseAction
     public void setSeatLeft(int seatLeft)
     {
         this.seatLeft = seatLeft;
+    }
+
+    public void setEndTime(String endTime)
+    {
+        this.endTime = endTime;
+    }
+
+    public void setDiscount(String discount)
+    {
+        this.discount = discount;
     }
 }

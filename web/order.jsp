@@ -5,7 +5,7 @@
 <head>
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>航班管理主页</title>
+  <title>订单管理主页</title>
   <jsp:include page="Common_css_js.jsp"></jsp:include>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -20,11 +20,11 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        航班
+        订单
       </h1>
       <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-user"></i>航班</a></li>
-        <li class="active">航班信息管理</li>
+        <li><a href="#"><i class="fa fa-user"></i>订单</a></li>
+        <li class="active">订单信息管理</li>
       </ol>
     </section>
 
@@ -90,7 +90,7 @@
 <script>
     $(function () {
         $('#player').bootstrapTable({
-            url: "http://"+window.location.hostname+":8080/getFlightList",
+            url: "http://"+window.location.hostname+":8080/getOrders",
             clickEdit: true,
             pagination:true,
             search:true,
@@ -103,36 +103,12 @@
             sortable:true,
             idTable:"advancedTable",
             columns: [{
-                field: 'id',
-                title: '航班id',
+                field: 'userId',
+                title: '预定用户',
                 sortable: true
             },{
-                field: 'startPlace',
-                title: '出发地点',
-                sortable: true,
-            }, {
-                field: 'endPlace',
-                title: '到达地点',
-                sortable: true,
-            },{
-                field: 'time',
-                title: '起飞时间',
-                sortable: true,
-            },{
-                field: 'endTime',
-                title: '降落时间',
-                sortable: true,
-            }, {
-                field: 'price',
-                title: '价格',
-                sortable: true,
-            }, {
-                field: 'discount',
-                title: '票价折扣',
-                sortable: true,
-            },{
-                field: 'seatLeft',
-                title: '剩余座位',
+                field: 'orderitemId',
+                title: '航班号',
                 sortable: true,
             }],
             responseHandler: function (res) {
@@ -164,11 +140,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModalLabel">添加航班记录</h4>
+        <h4 class="modal-title" id="exampleModalLabel">添加订单记录</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
-          <form class="form-horizontal" method="post" action="addFlight.action">
+          <form class="form-horizontal" method="post" action="addOrders.action">
             <div class="form-group" style="display:none">
               <label for="Type" class="control-label col-sm-4">操作类型</label>
               <div class="col-sm-6"><input required type="text" class="form-control input-md" id="Type" name="Type" value="Add"></div>
@@ -180,44 +156,14 @@
 
 
             <div class="form-group">
-              <label for="ID" class="control-label col-sm-4">航班id</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="id" name="id"></div>
+              <label for="ID" class="control-label col-sm-4">用户id</label>
+              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="userId" name="userId"></div>
             </div>
             <div class="form-group">
               <label for="Name" class="control-label col-sm-4">航班号</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="flightNo" name="flightNo"></div>
-            </div>
-            <div class="form-group">
-              <label for="Age" class="control-label col-sm-4">出发地点</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="startPlace" name="startPlace"></div>
-            </div>
-            <div class="form-group">
-              <label for="Group" class="control-label col-sm-4">到达地点</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="endPlace" name="endPlace"></div>
-            </div>
-            <div class="form-group">
-            <label for="CultureScore" class="control-label col-sm-4">起飞时间</label>
-            <div class="col-sm-6"><input required type="text" class="form-control input-md" id="time" name="time"></div>
-            </div>
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">降落时间</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="end_time" name="end_time"></div>
+              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="orderitemId" name="orderitemId"></div>
             </div>
 
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">价格</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="price" name="price"></div>
-            </div>
-
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">票价折扣</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="discount" name="discount"></div>
-            </div>
-
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">座位数</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="seatLeft" name="seatLeft"></div>
-            </div>
 
             <div class="form-group">
               <div class="col-xs-6"><button type="submit" class="btn btn-primary pull-right">确认</div>
@@ -249,46 +195,15 @@
               <div class="col-sm-6"><input required type="text" class="form-control input-md" id="Table" name="Table" value="Player"></div>
             </div>
 
-
             <div class="form-group">
-              <label for="ID" class="control-label col-sm-4">要修改的航班id</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="id" name="id"></div>
+              <label for="ID" class="control-label col-sm-4">用户id</label>
+              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="userId" name="userId"></div>
             </div>
             <div class="form-group">
               <label for="Name" class="control-label col-sm-4">航班号</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="flightNo" name="flightNo"></div>
-            </div>
-            <div class="form-group">
-              <label for="Age" class="control-label col-sm-4">出发地点</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="startPlace" name="startPlace"></div>
-            </div>
-            <div class="form-group">
-              <label for="Group" class="control-label col-sm-4">到达地点</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="endPlace" name="endPlace"></div>
-            </div>
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">起飞时间</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="time" name="time"></div>
-            </div>
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">降落时间</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="end_time" name="end_time"></div>
+              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="orderitemId" name="orderitemId"></div>
             </div>
 
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">价格</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="price" name="price"></div>
-            </div>
-
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">票价折扣</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="discount" name="discount"></div>
-            </div>
-
-            <div class="form-group">
-              <label for="CultureScore" class="control-label col-sm-4">座位数</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="seatLeft" name="seatLeft"></div>
-            </div>
 
             <div class="form-group">
               <div class="col-xs-6"><button type="submit" class="btn btn-primary pull-right">确认</div>
@@ -306,11 +221,11 @@
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="exampleModal">删除航班记录</h4>
+        <h4 class="modal-title" id="exampleModal">删除订单记录</h4>
       </div>
       <div class="modal-body">
         <div class="container-fluid" style="padding-right: 0px;padding-left: 0px;">
-          <form class="form-horizontal" method="post" action="deleteFlight.action">
+          <form class="form-horizontal" method="post" action="adminDeleteOrders.action">
 
             <div class="form-group" style="display:none">
               <label for="Table" class="control-label col-sm-4">操作表</label>
@@ -319,10 +234,13 @@
 
 
             <div class="form-group">
-              <label for="ID" class="control-label col-sm-4">删除航班的航班id</label>
-              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="flightId" name="flightId"></div>
+              <label for="ID" class="control-label col-sm-4">用户id</label>
+              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="userId" name="userId"></div>
             </div>
-
+            <div class="form-group">
+              <label for="Name" class="control-label col-sm-4">航班号</label>
+              <div class="col-sm-6"><input required type="text" class="form-control input-md" id="orderitemId" name="orderitemId"></div>
+            </div>
 
             <div class="form-group">
               <div class="col-xs-6"><button type="submit" class="btn btn-primary pull-right">确认</div>
@@ -340,7 +258,7 @@
 <script>
     $.ajax({
         // get请求地址
-        url: 'http://'+window.location.hostname+':8080/getFlightList',
+        url: 'http://'+window.location.hostname+':8080/getOrders',
         dataType: "json",
         success: function (data) {
             var optArr = [];

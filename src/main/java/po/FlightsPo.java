@@ -13,6 +13,8 @@ public class FlightsPo
     private String time;
     private double price;
     private int seatLeft;
+    private String endTime;
+    private String discount;
 
     @Id
     @Column(name = "ID", nullable = false, length = 20)
@@ -131,5 +133,29 @@ public class FlightsPo
         result = 31 * result + (int) (temp ^ (temp >>> 32));
         result = 31 * result + seatLeft;
         return result;
+    }
+
+    @Basic
+    @Column(name = "end_time", nullable = true, length = 255)
+    public String getEndTime()
+    {
+        return endTime;
+    }
+
+    public void setEndTime(String endTime)
+    {
+        this.endTime = endTime;
+    }
+
+    @Basic
+    @Column(name = "discount", nullable = true, length = 255)
+    public String getDiscount()
+    {
+        return discount;
+    }
+
+    public void setDiscount(String discount)
+    {
+        this.discount = discount;
     }
 }

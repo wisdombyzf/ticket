@@ -5,12 +5,13 @@
 <hibernate-configuration>
   <session-factory>
     <!--  mysql账户名  -->
-    <property name="connection.username">root</property>
       <!--<property name="connection.username">root</property>-->
+    <property name="connection.username">root</property>
     <!--  mysql密码  -->
-      <!--    <property name="connection.password">123456</property>-->
     <property name="connection.password">123456</property>
-    <!--  mysql驱动  -->
+      <!--    <property name="connection.password">123456</property>-->
+
+      <!--  mysql驱动  -->
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 
     <!--  mysql连接URL  -->

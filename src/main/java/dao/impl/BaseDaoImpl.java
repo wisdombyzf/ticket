@@ -45,7 +45,7 @@ public class BaseDaoImpl<T> implements BaseDao<T>
      *
      * @return session
      */
-    private Session getSession()
+    public Session getSession()
     {
         return sessionFactory.openSession();
     }
@@ -198,6 +198,41 @@ public class BaseDaoImpl<T> implements BaseDao<T>
             }
         }
     }
+
+
+    /**
+     * 删除一个对象
+     *
+     * @param obj
+     */
+    public void delete(Object obj)
+    {
+
+        Session session = null;
+        Transaction tx = null;
+        try
+        {
+            session = this.getSession();
+            tx = session.beginTransaction();
+            session.delete((T)obj);
+            tx.commit();
+        } catch (Exception ex)
+        {
+            System.out.println("删除对象出现错误！");
+            ex.printStackTrace();
+            if (tx != null)
+            {
+                tx.rollback();
+            }
+        } finally
+        {
+            if (session != null)
+            {
+                session.close();
+            }
+        }
+    }
+
 
     /**
      * 根据id查找一个对象
